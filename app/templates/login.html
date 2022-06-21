@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="nav">
+        <h1>WholeLottaMusic</h1>
+        <a href="{{url_for('register')}}">Sign Up</a>
+    </div>
+    <form method="POST">
+        <label for="username">Username:</label>
+        <input type="text" name="username" required>
+        <label for="passwored">Password:</label>
+        <input type="password" name="password" required>
+        <button type="submit">Login</button>
+    </form>
+{% endblock %}
