@@ -5,10 +5,8 @@
         <a href="{{url_for('register')}}">Sign Up</a>
     </div>
     <form method="POST">
-        <label for="username">Username:</label>
-        <input type="text" name="username" required>
-        <label for="passwored">Password:</label>
-        <input type="password" name="password" required>
+        <input type="text" name="username" placeholder="username" required>
+        <input type="password" name="password" placeholder="password" required>
         <button type="submit">Login</button>
     </form>
 {% endblock %}

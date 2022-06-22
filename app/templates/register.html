@@ -4,4 +4,9 @@
         <h1>WholeLottaMusic</h1>
         <a href="{{url_for('login')}}">Login</a>
     </div>
+    <form action="POST">
+        <input type="text" placeholder="username" name="username" required>
+        <input type="password" placeholder="password" name="password" required>
+        <button type="submit">Sign Up</button>
+    </form>
 {% endblock %}
