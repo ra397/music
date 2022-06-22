@@ -1,4 +1,3 @@
-from click import password_option
 from flask import render_template, request, session, redirect, url_for
 from app import app, db
 from app.models import User
