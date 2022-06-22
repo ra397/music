@@ -1,4 +1,22 @@
 {% extends "base.html" %}
+{% block head %}
+    <link rel="stylesheet" href="../static/auth.css">
+{% endblock %}
 {% block content %}
-    Register
+    <div class="nav">
+        <div class="nav-left">
+            <h1>WholeLottaMusic</h1>
+        </div>
+        <div class="nav-right">
+            <a href="{{url_for('login')}}">Sign in</a>
+        </div>
+    </div>
+    <div class="input">
+        <form method="post">
+            <input type="text" placeholder="username" name="username">
+            <input type="password" placeholder="password" name="password1">
+            <input type="password" placeholder="confirm password" name="password2">
+            <button type="submit">Sign up</button>
+        </form>
+    </div>
 {% endblock %}

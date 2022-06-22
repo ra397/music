@@ -1,0 +1,29 @@
+* {
+    border: 1px solid red;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.input {
+    margin: auto;
+    width: 500px;
+    margin-top: 200px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form * {
+    margin-top: 20px;
+    padding: 5px;
+}
