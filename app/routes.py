@@ -62,6 +62,7 @@ def main():
     db = connect_to_db()
     cur = db.cursor()
     songs = cur.execute('SELECT TITLE FROM SONGS WHERE USERNAME=?', [session['username']]).fetchall()
+    print(songs, file=sys.stderr)
     db.close()
     return render_template('main.html', songs=songs)
 

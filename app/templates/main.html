@@ -8,6 +8,8 @@
         </form>
     </div>
     <div class="my-songs">
-
+        {% for song in songs %}
+            <h1>{{ song[0] }}</h1>
+        {% endfor %}
     </div> 
 {% endblock %}

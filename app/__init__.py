@@ -17,8 +17,7 @@ db.execute(''' CREATE TABLE IF NOT EXISTS USERS (
 db.execute(''' CREATE TABLE IF NOT EXISTS SONGS (
         USERNAME   TEXT    NOT NULL,
         TITLE   TEXT    NOT NULL,
-        URL   TEXT    NOT NULL,
-        PRIMARY KEY(USERNAME)
+        URL   TEXT    NOT NULL
         );''')
 
 db.close()
