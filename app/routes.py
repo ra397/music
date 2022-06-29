@@ -49,9 +49,12 @@ def register():
             abort(404)
     return render_template('register.html')
 
-@app.route('/main')
+@app.route('/main', methods=['Get', 'POST'])
 def main():
-    db = connect_to_db()
-    users = db.execute('SELECT * FROM USERS').fetchall()
-    print(users, file=sys.stderr)
-    return render_template('main.html', users=users)
+    if request.method == 'POST':
+        url = request.form.get('url')
+        title = request.form.get('title')
+        
+        # add song to my songs
+
+    return render_template('main.html')
