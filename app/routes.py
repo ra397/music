@@ -1,12 +1,29 @@
-from __future__ import print_function # In python 2.7
+from __future__ import print_function
 from crypt import methods
+import sqlite3
 from app import app
-from flask import render_template, request, redirect, url_for
-from app import get_db_connection
+from flask import render_template, request, redirect, url_for, abort
 import sys
+
+def connect_to_db():
+    conn = sqlite3.connect('app.db')
+    return conn
+
 
 @app.route('/login', methods=['Get', 'POST'])
 def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+
+        # check if username exists, then check if password matches
+        db = connect_to_db()
+        cur = db.cursor()
+        cur.execute(f"SELECT USERNAME FROM USERS WHERE USERNAME='{username}' AND PASSWORD='{password}';")
+        if cur.fetchone():
+            return redirect(url_for('main'))
+        else:
+            abort(404)
     return render_template('login.html')
 
 @app.route('/register', methods=['Get', 'POST'])
@@ -15,19 +32,20 @@ def register():
         username = request.form.get('username')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
-        # authenticate that username is unique and that passwords match
-        conn = get_db_connection()
-        users = conn.execute('SELECT * FROM users WHERE username = "{}";'.format(username)).fetchall()
-        if len(users) == 0 and password1 == password2:
-            conn.execute("INSERT INTO users (username, password) VALUES ('{}', '{}')".format(username, password1)).fetchall()
-            conn.close()
-            return redirect(url_for('main'))
 
+        # authenticate that username is unique and that passwords match
+        db = connect_to_db()
+        cur = db.cursor()
+        unique = db.execute("SELECT USERNAME FROM USERS WHERE USERNAME=?;", [username]).fetchall()
+        if len(unique) == 0 and password1 == password2:
+            cur.execute("INSERT INTO USERS (USERNAME, PASSWORD) VALUES(?,?)", (username, password1))
+            db.commit()
+            db.close()
+            return redirect(url_for('main'))
+        else:
+            abort(404)
     return render_template('register.html')
 
 @app.route('/main')
 def main():
-    conn = get_db_connection()
-    users = conn.execute('SELECT * FROM users;').fetchall()
-    conn.close()
-    return render_template('main.html', users=users)
+    return render_template('main.html')

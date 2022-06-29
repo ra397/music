@@ -1,11 +1,20 @@
+# set up flask app and database
+
 from distutils.log import debug
 from flask import Flask
 import sqlite3
 
-def get_db_connection():
-    conn = sqlite3.connect('database.db')
-    conn.row_factory = sqlite3.Row
-    return conn
+db = sqlite3.connect('app.db')
+
+
+# create tables
+db.execute(''' CREATE TABLE IF NOT EXISTS USERS (
+        USERNAME   TEXT    NOT NULL,
+        PASSWORD   TEXT    NOT NULL,
+        PRIMARY KEY(USERNAME)
+        );''')
+
+db.close()
 
 app = Flask(__name__)
 
