@@ -24,6 +24,7 @@ db.execute(''' CREATE TABLE IF NOT EXISTS SONGS (
 db.close()
 
 app = Flask(__name__)
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 from app import routes
 
