@@ -9,6 +9,7 @@ def connect_to_db():
     conn = sqlite3.connect('app.db')
     return conn
 
+current_user = None
 
 @app.route('/login', methods=['Get', 'POST'])
 def login():
@@ -21,6 +22,7 @@ def login():
         cur = db.cursor()
         cur.execute(f"SELECT USERNAME FROM USERS WHERE USERNAME='{username}' AND PASSWORD='{password}';")
         if cur.fetchone():
+            current_user = username
             return redirect(url_for('main'))
         else:
             abort(404)
@@ -41,6 +43,7 @@ def register():
             cur.execute("INSERT INTO USERS (USERNAME, PASSWORD) VALUES(?,?)", (username, password1))
             db.commit()
             db.close()
+            current_user = username
             return redirect(url_for('main'))
         else:
             abort(404)
@@ -48,4 +51,7 @@ def register():
 
 @app.route('/main')
 def main():
-    return render_template('main.html')
+    db = connect_to_db()
+    users = db.execute('SELECT * FROM USERS').fetchall()
+    print(users, file=sys.stderr)
+    return render_template('main.html', users=users)

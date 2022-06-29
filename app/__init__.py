@@ -14,6 +14,12 @@ db.execute(''' CREATE TABLE IF NOT EXISTS USERS (
         PRIMARY KEY(USERNAME)
         );''')
 
+db.execute(''' CREATE TABLE IF NOT EXISTS SONGS (
+        USERNAME   TEXT    NOT NULL,
+        SONG   TEXT    NOT NULL,
+        PRIMARY KEY(USERNAME)
+        );''')
+
 db.close()
 
 app = Flask(__name__)

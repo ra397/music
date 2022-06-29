@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-    {% for user in users %}
-        <h1>{{ user['username'] }}</h1>
-    {% endfor %}
+    <div class="add-song">
+        <form method="post">
+            <input type="text" placeholder="Song url" name="url">
+            <button type="submit">Add song</button>
+        </form>
+    </div>
+    <div class="my-songs">
+
+    </div> 
 {% endblock %}
