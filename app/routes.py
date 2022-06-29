@@ -1,5 +1,6 @@
 from __future__ import print_function
 from crypt import methods
+from fileinput import close
 import sqlite3
 from app import app
 from flask import render_template, request, redirect, url_for, abort
@@ -9,7 +10,7 @@ def connect_to_db():
     conn = sqlite3.connect('app.db')
     return conn
 
-current_user = None
+current_user = ""
 
 @app.route('/login', methods=['Get', 'POST'])
 def login():
@@ -54,7 +55,15 @@ def main():
     if request.method == 'POST':
         url = request.form.get('url')
         title = request.form.get('title')
-        
-        # add song to my songs
+        db = connect_to_db()
+        cur = db.cursor()
+        print(current_user, file=sys.stderr)
+        cur.execute('INSERT INTO SONGS (USERNAME, TITLE, URL) VALUES(?,?,?)', (current_user, title, url))
+        db.commit()
+        db.close()
 
-    return render_template('main.html')
+    db = connect_to_db()
+    cur = db.cursor()
+    songs = cur.execute('SELECT TITLE FROM SONGS WHERE USERNAME=?', [current_user]).fetchall()
+    db.close()
+    return render_template('main.html', songs=songs)
