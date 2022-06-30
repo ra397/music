@@ -1,5 +1,16 @@
 {% extends "base.html" %}
+{% block head %}
+    <link rel="stylesheet" href="../static/auth.css">
+{% endblock %}
 {% block content %}
+    <div class="nav">
+        <div class="nav-left">
+            <h1>WholeLottaMusic</h1>
+        </div>
+        <div class="nav-right">
+            <a href="{{url_for('logout')}}">Logout</a>
+        </div>
+    </div>
     <div class="add-song">
         <form method="post">
             <input type="text" placeholder="url" name="url">
@@ -8,8 +19,10 @@
         </form>
     </div>
     <div class="my-songs">
-        {% for song in songs %}
-            <h1>{{ song[0] }}</h1>
-        {% endfor %}
+        <ul>
+            {% for song in songs %}
+                <li><a href="{{ song[1] }}">{{ song[0] }}</a></li>
+            {% endfor %}
+        </ul>
     </div> 
 {% endblock %}

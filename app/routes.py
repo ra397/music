@@ -47,8 +47,11 @@ def register():
             abort(404)
     return render_template('register.html')
 
+
 @app.route('/main', methods=['Get', 'POST'])
 def main():
+    if session.get('username') == None:
+        return redirect(url_for('login'))
     if request.method == 'POST':
         url = request.form.get('url')
         title = request.form.get('title')
@@ -61,7 +64,7 @@ def main():
 
     db = connect_to_db()
     cur = db.cursor()
-    songs = cur.execute('SELECT TITLE FROM SONGS WHERE USERNAME=?', [session['username']]).fetchall()
+    songs = cur.execute('SELECT TITLE, URL FROM SONGS WHERE USERNAME=?', [session['username']]).fetchall()
     print(songs, file=sys.stderr)
     db.close()
     return render_template('main.html', songs=songs)
@@ -73,3 +76,5 @@ def logout():
     session.pop('password', None)
     session.pop('password1', None)
     session.pop('password2', None)
+
+    return render_template('login.html')
