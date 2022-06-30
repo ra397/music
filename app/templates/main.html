@@ -20,6 +20,7 @@
     </div>
     <div class="my-songs">
         <h3>My Songs</h3>
+        <input type="text" id="search" onkeyup="seach()" placeholder="Search songs">
         <ul>
             {% for song in songs %}
                 <li>
