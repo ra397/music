@@ -29,11 +29,15 @@ $ sudo apt-get install python3.6
 ~~~
 $ pip install virtualenv
 $ virtualenv venv
-$ source virtualenv_name/bin/activate
+$ source venv/bin/activate
 ~~~
 - install flask
 ~~~
 $ sudo apt install python3-flask
+~~~
+- run application
+~~~
+$ flask run
 ~~~
 ## Features to implement
 <ol>
