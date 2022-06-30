@@ -58,7 +58,6 @@ def main():
         title = request.form.get('title')
         db = connect_to_db()
         cur = db.cursor()
-        print(session['username'], file=sys.stderr)
         cur.execute('INSERT INTO SONGS (USERNAME, TITLE, URL) VALUES(?,?,?)', (session['username'], title, url))
         db.commit()
         db.close()
@@ -66,7 +65,6 @@ def main():
     db = connect_to_db()
     cur = db.cursor()
     songs = cur.execute('SELECT TITLE, URL FROM SONGS WHERE USERNAME=?', [session['username']]).fetchall()
-    print(songs, file=sys.stderr)
     db.close()
     return render_template('main.html', songs=songs)
 

@@ -42,7 +42,11 @@ a {
 
 ul {
     list-style-type: none;
-  }
+}
+
+li {
+    margin: 15px;
+}
 
 .add-song {
     width: 50%;
@@ -54,4 +58,6 @@ ul {
     width: 50%;
     margin: auto;
     text-align: center;
+    border: 6px outset red;
+    border-radius: 25px;
 }
