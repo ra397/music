@@ -19,9 +19,13 @@
         </form>
     </div>
     <div class="my-songs">
+        <h3>My Songs</h3>
         <ul>
             {% for song in songs %}
-                <li><a href="{{ song[1] }}" target="_blank" rel="noopener noreferrer">{{ song[0] }}</a></li>
+                <li>
+                    <a href="{{ song[1] }}" target="_blank" rel="noopener noreferrer"><img src="../static/play.png" height="25px"></a>
+                    {{ song[0] }}
+                </li>
             {% endfor %}
         </ul>
     </div> 

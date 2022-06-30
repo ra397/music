@@ -10,7 +10,7 @@ def connect_to_db():
     conn = sqlite3.connect('app.db')
     return conn
 
-
+@app.route('/', methods=['Get', 'POST'])
 @app.route('/login', methods=['Get', 'POST'])
 def login():
     if request.method == 'POST':
@@ -24,7 +24,7 @@ def login():
         if cur.fetchone():
             return redirect(url_for('main'))
         else:
-            abort(404)
+            return redirect(url_for('login'))
     return render_template('login.html')
 
 @app.route('/register', methods=['Get', 'POST'])
@@ -44,7 +44,7 @@ def register():
             db.close()
             return redirect(url_for('main'))
         else:
-            abort(404)
+            return redirect(url_for('register'))
     return render_template('register.html')
 
 

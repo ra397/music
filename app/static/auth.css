@@ -1,3 +1,14 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(plasdrip.ttf);
+}
+
+h1 {
+    font-family: myFirstFont;
+    color: red;
+    font-size: 50px;
+}
+
 .nav {
     display: flex;
     justify-content: space-between;
@@ -27,4 +38,20 @@ form * {
 a {
     text-decoration: none;
     color: black;
+}
+
+ul {
+    list-style-type: none;
+  }
+
+.add-song {
+    width: 50%;
+    margin: auto;
+    margin-bottom: 100px;
+}
+
+.my-songs {
+    width: 50%;
+    margin: auto;
+    text-align: center;
 }
