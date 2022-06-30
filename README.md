@@ -41,8 +41,8 @@ $ flask run
 ~~~
 ## Features to implement
 <ol>
-<li>Enable users to delete entries</li>
 <li>Let users edit song titles</li>
+<li>Add a search bar so users can query songs</li>
 <li>Add a save button for each song entry that saves mp3 file to local computer</li>
 <li>Add a save all button that saves all song entries as a directory on your local comuter</li>
 <li>Add a background of album covers across all pages</li>
