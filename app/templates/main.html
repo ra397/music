@@ -2,6 +2,7 @@
 {% block head %}
     <link rel="stylesheet" href="../static/auth.css">
     <script src="../static/search.js" defer></script>
+    <script src="../static/popup.js" defer></script>
 {% endblock %}
 {% block content %}
     <div class="nav">
@@ -24,11 +25,13 @@
         <ul id="myUl">
             {% for song in songs %}
                 <li>
-                    <a href="{{ song[1] }}" target="_blank" rel="noopener noreferrer"><img src="../static/play.png" height="25px"></a>
+                    <input id="play" type="image" src="../static/play.png" height="25px" onclick="popup()">
                     <p>{{ song[0] }}</p>
                     <a href="/delete/{{ song[0] }}">Delete</a>
                 </li>
             {% endfor %}
         </ul>
     </div> 
+    <div id="popup">
+    </div>
 {% endblock %}
