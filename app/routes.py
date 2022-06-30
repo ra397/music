@@ -50,23 +50,41 @@ def register():
 
 @app.route('/main', methods=['Get', 'POST'])
 def main():
-    # verify user is logged in before tring to access main
+    # verify user is logged in before trying to access main
     if session.get('username') == None:
         return redirect(url_for('login'))
     if request.method == 'POST':
         url = request.form.get('url')
         title = request.form.get('title')
+        # add song to database
         db = connect_to_db()
         cur = db.cursor()
         cur.execute('INSERT INTO SONGS (USERNAME, TITLE, URL) VALUES(?,?,?)', (session['username'], title, url))
         db.commit()
         db.close()
 
+    # update the list of songs in main.html
     db = connect_to_db()
     cur = db.cursor()
     songs = cur.execute('SELECT TITLE, URL FROM SONGS WHERE USERNAME=?', [session['username']]).fetchall()
     db.close()
     return render_template('main.html', songs=songs)
+
+@app.route('/delete/<string:song_title>', methods=['GET', 'POST', 'DELETE'])
+def delete_song(song_title):
+    # verify user is logged in
+    if session.get('username') == None:
+        return redirect(url_for('login'))
+    # delete song from the current user
+    db = connect_to_db()
+    cur = db.cursor()
+    cur.execute('DELETE FROM SONGS WHERE USERNAME=? AND TITLE=?', (session['username'], song_title))
+    db.commit()
+    # update the list of songs in main.html
+    songs = cur.execute('SELECT TITLE, URL FROM SONGS WHERE USERNAME=?', [session['username']]).fetchall()
+    db.close()
+    return render_template('main.html', songs=songs)
+    
 
 @app.route('/logout')
 def logout():

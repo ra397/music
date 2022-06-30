@@ -25,6 +25,7 @@
                 <li>
                     <a href="{{ song[1] }}" target="_blank" rel="noopener noreferrer"><img src="../static/play.png" height="25px"></a>
                     {{ song[0] }}
+                    <a href="/delete/{{ song[0] }}">Delete</a>
                 </li>
             {% endfor %}
         </ul>
