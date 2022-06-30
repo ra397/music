@@ -1,5 +1,5 @@
 # Music Player Web Aplication
-A flask web application where users can save their favorite music from other platforms
+A flask web application where users can save their favorite music from different streaming platforms
 
 <div class="images">
     <li>Login Page</li>
