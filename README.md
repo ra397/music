@@ -3,17 +3,17 @@ A flask web application where users can save their favorite music from other pla
 
 <div class="images">
     <li>Login Page</li>
-    <img src="images/login.png" height="250px" style="margin-left: auto;
+    <img src="images/login.png" style="margin-left: auto;
   margin-right: auto;
   display: block;
   margin-bottom: 15px;">
   <li>Registration page</li>
-    <img src="images/register.png" height="250px" style="margin-left: auto;
+    <img src="images/register.png" style="margin-left: auto;
   margin-right: auto;
   display: block;
   margin-bottom: 15px;">
   <li>Main application</li>
-    <img src="images/main.png" height="250px" style="margin-left: auto;
+    <img src="images/main.png" style="margin-left: auto;
   margin-right: auto;
   display: block;
   margin-bottom: 15px;">
