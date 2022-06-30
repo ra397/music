@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block head %}
     <link rel="stylesheet" href="../static/auth.css">
+    <script src="../static/search.js" defer></script>
 {% endblock %}
 {% block content %}
     <div class="nav">
@@ -19,13 +20,12 @@
         </form>
     </div>
     <div class="my-songs">
-        <h3>My Songs</h3>
-        <input type="text" id="search" onkeyup="seach()" placeholder="Search songs">
-        <ul>
+        <input type="text" id="search" onkeyup="search()" placeholder="Search songs">
+        <ul id="myUl">
             {% for song in songs %}
                 <li>
                     <a href="{{ song[1] }}" target="_blank" rel="noopener noreferrer"><img src="../static/play.png" height="25px"></a>
-                    {{ song[0] }}
+                    <p>{{ song[0] }}</p>
                     <a href="/delete/{{ song[0] }}">Delete</a>
                 </li>
             {% endfor %}
