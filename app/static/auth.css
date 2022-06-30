@@ -3,6 +3,10 @@
     src: url(plasdrip.ttf);
 }
 
+body {
+    font-family: 'Courier New', Courier, monospace;
+}
+
 h1 {
     font-family: myFirstFont;
     color: red;
@@ -17,6 +21,7 @@ h1 {
 .nav-right {
     display: flex;
     align-items: center;
+    padding: 25px;
 }
 
 .input {
@@ -25,9 +30,24 @@ h1 {
     margin-top: 200px;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form * {
+    margin-top: 20px;
+    padding: 5px;
+}
+
 a {
     text-decoration: none;
     color: black;
+    margin-left: 20px;
+}
+
+a:hover {
+    font-weight: bolder;
 }
 
 ul {
@@ -45,7 +65,7 @@ li {
 }
 
 .my-songs {
-    width: 50%;
+    width: 70%;
     margin: auto;
     text-align: center;
     border: 6px outset red;
