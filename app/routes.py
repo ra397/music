@@ -39,7 +39,7 @@ def register():
         cur = db.cursor()
         unique = db.execute("SELECT USERNAME FROM USERS WHERE USERNAME=?;", [session['username']]).fetchall()
         if len(unique) == 0 and session['password1'] == session['password2']:
-            cur.execute("INSERT INTO USERS (USERNAME, PASSWORD) VALUES(?,?)", (session['username'], session['password']))
+            cur.execute("INSERT INTO USERS (USERNAME, PASSWORD) VALUES(?,?)", (session['username'], session['password1']))
             db.commit()
             db.close()
             return redirect(url_for('main'))
@@ -50,6 +50,7 @@ def register():
 
 @app.route('/main', methods=['Get', 'POST'])
 def main():
+    # verify user is logged in before tring to access main
     if session.get('username') == None:
         return redirect(url_for('login'))
     if request.method == 'POST':
@@ -77,4 +78,4 @@ def logout():
     session.pop('password1', None)
     session.pop('password2', None)
 
-    return render_template('login.html')
+    return redirect(url_for('login'))
