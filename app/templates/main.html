@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block head %}
     <link rel="stylesheet" href="../static/auth.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
     <script src="../static/search.js" defer></script>
     <script src="../static/popup.js" defer></script>
 {% endblock %}
@@ -15,7 +16,7 @@
     </div>
     <div class="add-song">
         <form method="post">
-            <input type="text" placeholder="url" name="url" required>
+            <input type="text" placeholder="Youtube url" name="url" required>
             <input type="text" placeholder="title" name="title">
             <button type="submit">Add song</button>
         </form>
@@ -25,13 +26,24 @@
         <ul id="myUl">
             {% for song in songs %}
                 <li>
-                    <input id="play" type="image" src="../static/play.png" height="25px" onclick="popup()">
+                    <input id="play" type="image" src="../static/play.png" height="25px">
                     <p>{{ song[0] }}</p>
                     <a href="/delete/{{ song[0] }}">Delete</a>
                 </li>
+
+                <script>
+                    $(function(){
+                        $('#play').click(function(){ 
+                            console.log('clicked')
+                            console.log('here')
+                            $('#iframeHolder').html('<iframe id="iframe" src={{ song[1] }} width="700" height="450"></iframe>');
+                        });   
+                    });
+                </script>
             {% endfor %}
         </ul>
-    </div> 
+    </div>
     <div id="popup">
+        <div id="iframeHolder"></div>
     </div>
 {% endblock %}

@@ -10,6 +10,12 @@ def connect_to_db():
     conn = sqlite3.connect('app.db')
     return conn
 
+def parse_url(url):
+    index = url.find('.com/')
+    final_url = url[:index] + 'you ' + url[index:]
+    return final_url
+
+    
 @app.route('/', methods=['Get', 'POST'])
 @app.route('/login', methods=['Get', 'POST'])
 def login():
@@ -67,6 +73,9 @@ def main():
     db = connect_to_db()
     cur = db.cursor()
     songs = cur.execute('SELECT TITLE, URL FROM SONGS WHERE USERNAME=?', [session['username']]).fetchall()
+
+
+
     db.close()
     return render_template('main.html', songs=songs)
 

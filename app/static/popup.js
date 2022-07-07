@@ -1,7 +1,7 @@
-function popup() {
-    let popup = document.getElementById('popup')
-    popup.style.display = 'block'
-    
-    const iframe = document.createElement('iframe')
-    iframe.setAttribute('src', 'https://youtube.com');
-}
+$(function(){
+    $('.play').click(function(){ 
+        console.log('clicked')
+        console.log('here')
+        $('#iframeHolder').html('<iframe id="iframe" src="{{ song[0] }} width="700" height="450"></iframe>');
+    });   
+});
