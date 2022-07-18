@@ -11,9 +11,11 @@ def connect_to_db():
     return conn
 
 def parse_url(url):
-    index = url.find('.com/')
-    final_url = url[:index] + 'you ' + url[index:]
-    return final_url
+    base_url = 'https://www.youtube.com/embed/'
+    index = url.find('watch?v=')
+    index += len('watch?v=')
+    video_id = url[index:]
+    return base_url + video_id
 
     
 @app.route('/', methods=['Get', 'POST'])

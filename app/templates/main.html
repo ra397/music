@@ -26,20 +26,10 @@
         <ul id="myUl">
             {% for song in songs %}
                 <li>
-                    <input id="play" type="image" src="../static/play.png" height="25px">
+                    <input id="play" type="image" src="../static/play.png" height="25px" onclick="popup()">
                     <p>{{ song[0] }}</p>
                     <a href="/delete/{{ song[0] }}">Delete</a>
                 </li>
-
-                <script>
-                    $(function(){
-                        $('#play').click(function(){ 
-                            console.log('clicked')
-                            console.log('here')
-                            $('#iframeHolder').html('<iframe id="iframe" src={{ song[1] }} width="700" height="450"></iframe>');
-                        });   
-                    });
-                </script>
             {% endfor %}
         </ul>
     </div>
