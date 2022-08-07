@@ -76,11 +76,6 @@ def main():
     cur = db.cursor()
     songs = cur.execute('SELECT TITLE, URL FROM SONGS WHERE USERNAME=?', [session['username']]).fetchall()
     db.close()
-    
-    for song in songs:
-        song = list(song)
-        song[1] = parse_url(song[1])
-        print(song[1])
 
     print(songs, file=sys.stderr)
     return render_template('main.html', songs=songs)

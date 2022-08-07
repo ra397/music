@@ -6,7 +6,6 @@ import sqlite3
 
 db = sqlite3.connect('app.db')
 
-
 # create tables
 db.execute(''' CREATE TABLE IF NOT EXISTS USERS (
         USERNAME   TEXT    NOT NULL,

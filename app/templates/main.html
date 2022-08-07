@@ -26,14 +26,16 @@
         <ul id="myUl">
             {% for song in songs %}
                 <li>
-                    <input id="play" type="image" src="../static/play.png" height="25px" onclick="popup()">
+                    <a href="{{ song[1] }}" target="popup">
+                        <input id="play" type="image" src="../static/play.png" height="25px">
+                    </a>
                     <p>{{ song[0] }}</p>
                     <a href="/delete/{{ song[0] }}">Delete</a>
                 </li>
             {% endfor %}
         </ul>
     </div>
-    <div id="popup">
-        <div id="iframeHolder"></div>
+    <div id="iframeHolder">
+        <iframe name="popup" src="" ></iframe>
     </div>
 {% endblock %}
