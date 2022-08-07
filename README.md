@@ -35,6 +35,10 @@ $ source venv/bin/activate
 ~~~
 $ sudo apt install python3-flask
 ~~~
+- install jquery
+~~~
+$ npm install jquery
+~~~
 - run application
 ~~~
 $ flask run
