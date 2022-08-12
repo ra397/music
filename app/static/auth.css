@@ -97,3 +97,11 @@ li {
 img:hover {
     cursor: pointer;
 }
+
+.users {
+    width: 70%;
+    margin: auto;
+    text-align: center;
+    border: 6px outset red;
+    border-radius: 25px;
+}

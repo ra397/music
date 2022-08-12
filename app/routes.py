@@ -87,6 +87,15 @@ def delete_song(song_title):
 
     return redirect(url_for('main'))
 
+@app.route('/explore')
+def explore():
+    # get a list of all users
+    db = connect_to_db()
+    cur = db.cursor()
+    users = cur.execute('SELECT USERNAME FROM USERS').fetchall()
+
+    return render_template('explore.html', users=users)
+
 @app.route('/logout')
 def logout():
      # remove the username from the session if it's there
