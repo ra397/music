@@ -89,12 +89,28 @@ def delete_song(song_title):
 
 @app.route('/explore')
 def explore():
+    # verify user is logged in
+    if session.get('username') == None:
+        return redirect(url_for('login'))
     # get a list of all users
     db = connect_to_db()
     cur = db.cursor()
     users = cur.execute('SELECT USERNAME FROM USERS').fetchall()
 
     return render_template('explore.html', users=users)
+
+@app.route('/profile/<string:username>', methods=['Get', 'POST'])
+def profile(username):
+    # verify user is logged in
+    if session.get('username') == None:
+        return redirect(url_for('login'))
+    # get a list of all songs that user listens to 
+    db = connect_to_db()
+    cur = db.cursor()
+    songs = cur.execute('SELECT TITLE, URL FROM SONGS WHERE USERNAME=?', (username,)).fetchall()
+
+    title = username + "'s music:"
+    return render_template('profile.html', title=title, songs=songs)
 
 @app.route('/logout')
 def logout():

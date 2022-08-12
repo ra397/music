@@ -15,13 +15,8 @@
             <a href="{{url_for('logout')}}">Logout</a>
         </div>
     </div>
-    <div class="add-song">
-        <form method="post">
-            <input type="text" placeholder="Youtube url" name="url" required>
-            <input type="text" placeholder="title" name="title">
-            <button type="submit">Add song</button>
-        </form>
-    </div>
+
+    <h3>{{ title }}</h3>
     <div class="my-songs">
         <input type="text" id="search" onkeyup="search()" placeholder="Search songs">
         <button id="exit" onClick="window.location.reload();hideExit();">Exit video</button>
@@ -32,7 +27,6 @@
                         <input id="play" type="image" src="../static/play.png" height="25px">
                     </a>
                     <p>{{ song[0] }}</p>
-                    <a href="/delete/{{ song[0] }}">Delete</a>
                 </li>
             {% endfor %}
         </ul>

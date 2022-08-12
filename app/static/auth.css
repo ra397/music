@@ -105,3 +105,7 @@ img:hover {
     border: 6px outset red;
     border-radius: 25px;
 }
+
+h3 {
+    text-align: center;
+}
