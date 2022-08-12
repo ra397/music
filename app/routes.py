@@ -9,14 +9,6 @@ import sys
 def connect_to_db():
     conn = sqlite3.connect('app.db')
     return conn
-
-def parse_url(url):
-    base_url = 'https://www.youtube.com/embed/'
-    index = url.find('watch?v=')
-    index += len('watch?v=')
-    video_id = url[index:]
-    return base_url + video_id
-
     
 @app.route('/', methods=['Get', 'POST'])
 @app.route('/login', methods=['Get', 'POST'])
@@ -77,7 +69,6 @@ def main():
     songs = cur.execute('SELECT TITLE, URL FROM SONGS WHERE USERNAME=?', [session['username']]).fetchall()
     db.close()
 
-    print(songs, file=sys.stderr)
     return render_template('main.html', songs=songs)
 
 @app.route('/delete/<string:song_title>', methods=['GET', 'POST', 'DELETE'])
