@@ -2,6 +2,7 @@ from __future__ import print_function
 from crypt import methods
 from fileinput import close
 import sqlite3
+from this import s
 from app import app
 from flask import render_template, request, redirect, url_for, abort, session
 import sys
@@ -69,6 +70,8 @@ def main():
     songs = cur.execute('SELECT TITLE, URL FROM SONGS WHERE USERNAME=?', [session['username']]).fetchall()
     db.close()
 
+    songs = list(set(songs))
+
     return render_template('main.html', songs=songs)
 
 @app.route('/delete/<string:song_title>', methods=['GET', 'POST', 'DELETE'])
@@ -80,12 +83,9 @@ def delete_song(song_title):
     db = connect_to_db()
     cur = db.cursor()
     cur.execute('DELETE FROM SONGS WHERE USERNAME=? AND TITLE=?', (session['username'], song_title))
-    db.commit()
-    # update the list of songs in main.html
-    songs = cur.execute('SELECT TITLE, URL FROM SONGS WHERE USERNAME=?', [session['username']]).fetchall()
-    db.close()
-    return render_template('main.html', songs=songs)
-    
+    db.commit() 
+
+    return redirect(url_for('main'))
 
 @app.route('/logout')
 def logout():
