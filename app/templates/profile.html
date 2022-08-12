@@ -23,7 +23,7 @@
         <ul id="myUl">
             {% for song in songs %}
                 <li>
-                    <a href="{{ song[1] }}" class="lightbox" onclick="showExit()">
+                    <a href="{{ song[1] }}" class="lightbox" onclick="showExit();">
                         <input id="play" type="image" src="../static/play.png" height="25px">
                     </a>
                     <p>{{ song[0] }}</p>
@@ -40,10 +40,8 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
 
-    <!-- Add this to bottom of page after the lightbox markup-->
-    <!-- This code is from: http://www.javascriptkit.com/dhtmltutors/youtube-api-lightbox3.shtml -->
     <script>
     
         // load Youtube API code asynchronously
