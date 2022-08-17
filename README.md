@@ -6,25 +6,31 @@ A flask web application where users can save their favorite music from different
     <img src="images/login.png" style="margin-left: auto;
   margin-right: auto;
   display: block;
-  margin-bottom: 15px;">
+  margin-bottom: 25px;">
   
   <li>Registration page</li>
     <img src="images/register.png" style="margin-left: auto;
   margin-right: auto;
   display: block;
-  margin-bottom: 15px;">
+  margin-bottom: 25px;">
   
   <li>Main application</li>
     <img src="images/main.png" style="margin-left: auto;
   margin-right: auto;
   display: block;
-  margin-bottom: 15px;">
+  margin-bottom: 25px;">
   
   <li>Discover page</li>
   <img src=images/explore.png style="margin-left: auto;
   margin-right: auto;
   display: block;
-  margin-bottom: 15px;">
+  margin-bottom: 25px;">
+  
+  <li>User profile page</li>
+  <img src=images/profile.png style="margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-bottom: 25px;">
 </div>
 
 ## Installation
