@@ -1,5 +1,5 @@
 # Music Player Web Aplication
-A flask web application where users can save their favorite music from different streaming platforms
+A flask web application where users can save their favorite music from different streaming platforms and divscover music other users are listening to.
 
 <div class="images">
     <li>Login Page</li>
@@ -7,13 +7,21 @@ A flask web application where users can save their favorite music from different
   margin-right: auto;
   display: block;
   margin-bottom: 15px;">
+  
   <li>Registration page</li>
     <img src="images/register.png" style="margin-left: auto;
   margin-right: auto;
   display: block;
   margin-bottom: 15px;">
+  
   <li>Main application</li>
     <img src="images/main.png" style="margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-bottom: 15px;">
+  
+  <li>Discover page</li>
+  <img src=images/explore.png style="margin-left: auto;
   margin-right: auto;
   display: block;
   margin-bottom: 15px;">
